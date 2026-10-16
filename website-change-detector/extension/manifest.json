@@ -1,0 +1,8 @@
+{
+  "manifest_version": 3,
+  "name": "PagePulse CSS Selector Picker",
+  "version": "1.0.0",
+  "description": "Pick a page region and copy a CSS selector for Website Change Detector.",
+  "permissions": ["activeTab", "scripting", "clipboardWrite"],
+  "action": { "default_popup": "popup.html", "default_title": "Pick CSS selector" }
+}

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Website Change Detector</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">↗</span><div><strong>PagePulse</strong><small>Website Change Detector</small></div></div>
+    <div class="top-actions"><span class="live-dot"></span><span id="system-status">Connecting…</span><button id="digest-btn" class="button secondary">Send daily digest</button><button id="add-btn" class="button primary">＋ Add monitor</button></div>
+  </header>
+  <main class="shell">
+    <section class="hero">
+      <div><p class="eyebrow">PUBLIC PAGE MONITORING</p><h1>Know when a page changes.</h1><p class="sub">Meaningful updates, clean diffs, and alerts — without the noise.</p></div>
+      <div class="hero-art"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="pulse-card"><span class="mini-dot"></span><span>Page status</span><strong>Monitoring</strong><div class="pulse-line"></div></div></div>
+    </section>
+    <section class="stats">
+      <article class="stat"><span>All monitors</span><strong id="stat-total">0</strong><small>Pages being watched</small></article>
+      <article class="stat"><span>Healthy</span><strong id="stat-ok">0</strong><small>Last check successful</small></article>
+      <article class="stat"><span>Changes found</span><strong id="stat-changes">0</strong><small>Pages with a saved version</small></article>
+      <article class="stat"><span>Needs attention</span><strong id="stat-errors">0</strong><small>Errors or blocks</small></article>
+    </section>
+    <section class="section-head"><div><h2>Your monitors</h2><p>Scheduled checks and latest results</p></div><div class="filters"><input id="search" placeholder="Search monitors…" aria-label="Search monitors"><select id="status-filter" aria-label="Filter status"><option value="all">All statuses</option><option>OK</option><option>ERROR</option><option>BLOCKED</option></select></div></section>
+    <section id="monitor-list" class="monitor-list"><div class="empty loading">Loading monitors…</div></section>
+    <footer>Public pages only · No website credentials stored · Use reasonable check intervals</footer>
+  </main>
+  <dialog id="monitor-dialog">
+    <form id="monitor-form">
+      <div class="dialog-head"><div><p class="eyebrow">MONITOR SETUP</p><h2 id="dialog-title">Add a monitor</h2></div><button type="button" class="icon-button" id="close-dialog" aria-label="Close">✕</button></div>
+      <input type="hidden" id="monitor-id">
+      <label>Monitor name<input id="name" required maxlength="120" placeholder="e.g. University notices"></label>
+      <label>Public page URL<input id="url" required type="url" placeholder="https://example.com/notices"></label>
+      <div class="form-grid"><label>Check interval<select id="interval"><option value="15">Every 15 minutes</option><option value="30">Every 30 minutes</option><option value="60" selected>Every hour</option><option value="180">Every 3 hours</option><option value="360">Every 6 hours</option><option value="720">Every 12 hours</option><option value="1440">Every 24 hours</option></select></label><label>Sensitivity<select id="sensitivity"><option value="low">Low — filter small changes</option><option value="medium" selected>Medium — balanced</option><option value="high">High — catch small changes</option></select></label></div>
+      <label>Watch only these CSS selectors <span class="hint">(optional; one selector per line)</span><textarea id="watch" rows="2" placeholder="main article&#10;.notice-list"></textarea></label>
+      <label>Ignore these CSS selectors <span class="hint">(one selector per line)</span><textarea id="ignore" rows="2" placeholder=".cookie-banner&#10;.live-counter"></textarea></label>
+      <label>Webhook URL <span class="hint">(optional Discord-compatible webhook)</span><input id="webhook" type="url" placeholder="https://…"></label>
+      <p id="form-error" class="error-text" role="alert"></p>
+      <div class="dialog-actions"><button type="button" id="cancel-btn" class="button secondary">Cancel</button><button class="button primary" type="submit">Save monitor</button></div>
+    </form>
+  </dialog>
+  <dialog id="detail-dialog" class="detail-dialog"><div class="dialog-head"><div><p class="eyebrow">MONITOR DETAILS</p><h2 id="detail-title">Versions</h2><p id="detail-url" class="sub"></p></div><button class="icon-button" id="close-detail" aria-label="Close">✕</button></div><div id="detail-content"></div></dialog>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="/app.js"></script>
+</body>
+</html>
