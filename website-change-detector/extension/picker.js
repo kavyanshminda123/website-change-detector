@@ -12,6 +12,7 @@
         const cls=[...node.classList].find(c=>/^[a-zA-Z_-][\\w-]*$/.test(c));
         if(cls) part+='.'+CSS.escape(cls);
       }
+      
       const parent=node.parentElement;
       if(parent){
         const siblings=[...parent.children].filter(x=>x.tagName===node.tagName);
