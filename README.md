@@ -18,7 +18,7 @@ A self-hosted public webpage monitoring dashboard and companion Chromium browser
 The application files live inside a nested `website-change-detector` subfolder:
 
 ```bash
-git clone [https://github.com/kavyanshminda123/website-change-detector.git](https://github.com/kavyanshminda123/website-change-detector.git)
+git clone https://github.com/kavyanshminda123/website-change-detector.git
 cd website-change-detector/website-change-detector
 ```
 
